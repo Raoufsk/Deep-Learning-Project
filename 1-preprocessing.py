@@ -11,11 +11,12 @@ samples = pd.read_csv(
 patients = pd.read_csv(
 	"data_clinical_patient.txt",
 	header = 0, 
+    index_col = 0,
 	sep = "\t",
 	dtype = str)
 
 samples = samples.join(patients)
-
+print(samples.head())
 mutations = pd.read_csv(
 	"data_mutations_extended.txt",
 	header = 0, 
