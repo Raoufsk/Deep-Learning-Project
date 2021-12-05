@@ -1,3 +1,6 @@
+#Author: BOUDEMIA Ala eddine
+#UMAP for the file that contains pateints data
+
 import pandas as pd
 import plotly.express as px
 

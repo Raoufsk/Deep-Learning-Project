@@ -1,3 +1,6 @@
+#Author: BOUDEMIA Ala eddine
+#Preprocess data to generate the required files
+
 import pandas as pd 
 import numpy as np
 
@@ -16,7 +19,7 @@ patients = pd.read_csv(
 	dtype = str)
 
 samples = samples.join(patients)
-print(samples.head())
+
 mutations = pd.read_csv(
 	"data_mutations_extended.txt",
 	header = 0, 

@@ -1,3 +1,6 @@
+#Author: BOUDEMIA Ala eddine
+#Plot different histograms and pie charts
+
 import pandas as pd
 import plotly.express as px
 
