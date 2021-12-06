@@ -1,6 +1,3 @@
-#Author: BOUDEMIA Ala eddine
-#Preprocess data to generate the required files
-
 import pandas as pd 
 import numpy as np
 
@@ -40,9 +37,11 @@ samples.set_index("SAMPLE_ID", inplace = True)
 samples_genes = samples_genes.join(samples["CANCER_TYPE"])
 
 # Filter the low represented cancer types
-to_keep = samples_genes[samples_genes["CANCER_TYPE"] > "500"]
+counts = samples_genes.groupby("CANCER_TYPE").agg({"CANCER_TYPE":"count"})
+to_keep = counts[counts["CANCER_TYPE"] > 1500]
 to_keep = to_keep[to_keep.index != "UNKNOWN"]
 to_keep = to_keep[to_keep.index != "Cancer of Unknown Primary"]
+samples_genes = samples_genes[samples_genes.CANCER_TYPE.isin(to_keep.index)]
 
 # without patients data
 samples_genes.to_csv("preprocessed_file_v0_filtered", sep = "\t", compression = "zip")
@@ -50,7 +49,6 @@ samples_genes.to_csv("preprocessed_file_v0_filtered", sep = "\t", compression = 
 # with patients data
 samples_genes = samples_genes.join(samples[
 	["SEX", "PRIMARY_RACE", "ETHNICITY", 
-	"INT_CONTACT", "INT_DOD", "YEAR_CONTACT", 
-	"DEAD", "YEAR_DEATH"]])
+	"YEAR_CONTACT", "DEAD", "YEAR_DEATH"]])
 
 samples_genes.to_csv("preprocessed_file_v1_filtered", sep = "\t", compression = "zip")

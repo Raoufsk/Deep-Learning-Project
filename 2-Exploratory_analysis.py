@@ -1,6 +1,3 @@
-#Author: BOUDEMIA Ala eddine
-#Plot different histograms and pie charts
-
 import pandas as pd
 import plotly.express as px
 
@@ -32,7 +29,7 @@ fig3 = px.pie(
 fig3.show()
 fig3.write_html("pie_cancer_type.html")
 
-to_keep = var[var["CANCER_TYPE"] > 500]
+to_keep = var[var["CANCER_TYPE"] > 1500]
 to_keep = to_keep[to_keep.index != "UNKNOWN"]
 to_keep = to_keep[to_keep.index != "Cancer of Unknown Primary"]
 

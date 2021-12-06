@@ -1,6 +1,3 @@
-#Author: BOUDEMIA Ala eddine
-#UMAP for based on cancer type
-
 import pandas as pd
 import plotly.express as px
 

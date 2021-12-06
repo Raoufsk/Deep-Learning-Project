@@ -1,6 +1,3 @@
-#Author: BOUDEMIA Ala eddine
-#UMAP for the file that contains pateints data
-
 import pandas as pd
 import plotly.express as px
 
@@ -19,11 +16,10 @@ file = pd.read_csv(
 	sep = "\t")
 
 data = f[["CANCER_TYPE", "SEX", "PRIMARY_RACE", "ETHNICITY", 
-"INT_CONTACT", "INT_DOD", "YEAR_CONTACT", "DEAD", "YEAR_DEATH"]]
+	"YEAR_CONTACT", "DEAD", "YEAR_DEATH"]]
 
 f = f.drop(["CANCER_TYPE", "SEX", "PRIMARY_RACE", "ETHNICITY", 
-"INT_CONTACT", "INT_DOD", "YEAR_CONTACT", 
-"DEAD", "YEAR_DEATH"], axis = 1)
+	"YEAR_CONTACT", "DEAD", "YEAR_DEATH"], axis = 1)
 
 reducer = UMAP(
     n_components = 2, 
